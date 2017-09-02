@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registration form</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="/css/form5.css">
+	</head>
+	<body>
+		<div class="container form5">
+			<form method="POST" action="welcome.html" name="myForm"  onSubmit="return validateForm();">
+			 <div class="col-12">
+		        <h3>Registration form</h3>
+		         <div class="sep"></div>
+					<div class="form-group row">
+						<input type="password" placeholder="User Name" class="form-control" id="uname" name="uname" value="" onblur="return (validateuname())" />
+			        <div class="errmsg" id="msg1"></div>
+			            <input type="email" placeholder="Email address"  class="form-control" id="email" name="email" value="" onblur="return (validateemail())" />
+			        <div class="errmsg" id="msg2"></div>
+			            <input type="password" placeholder="Password" class="form-control" id="password" name="password" value="" onblur="return (validatepassword())" />
+			        <div class="errmsg" id="msg3"></div>
+			            <input type="password" placeholder="Confirm Password" class="form-control" id="cpassword" name="cpassword" value="" onblur="return (validatecpassword())" />
+			        <div class="errmsg" id="msg4"></div>
+			      <div class="sep"></div>
+			           		<input type="password" placeholder="First Name" class="form-control" id="fname" name="fname" value="" onblur="return (validatefname())" />
+			        <div class="errmsg" id="msg5"></div>
+			           		<input type="password" placeholder="Last Name" class="form-control" id="lname" name="lname" value="" onblur="return (validatelname())" />
+			        <div class="errmsg" id="msg6"></div>
+			           		<input type="password" placeholder="Gender" class="form-control" id="lname" name="lname" value="" /><br>
+
+			           		<div class="row">
+								  <div class="col-12">
+								  		<input name="ceck" id="check" value="" type="checkbox" />I accept the terms of use
+								  </div>
+								  <div class="col-12">
+								  	<input name="ceck" id="check" value="" type="checkbox" />I want to receive news 
+								  </div>
+							</div>
+						</div>
+			             <div class="row">
+								  <div class="col-md-4"></div>
+								  <div class="col-md-4" button-align="center-block"><button type="submit">Submit</div>
+								  <div class="col-md-4"></div>
+						</div>
+					</div>
+			</form>
+		</div>
+	<script type="text/javascript">
+		function validateForm(){
+			if (validateuname()) {
+				if (validateemail()) {
+					if (validatepassword()) {
+						if (validatecpassword()) {
+							if (validatefname()) {
+								if (validatelname()) {
+
+								}
+							}
+						}
+					}
+				}
+			}
+				return false;
+		}
+		function validateuname() {
+			var x=document.getElementById('uname').value;
+		    var regex = /^[a-zA-Z\s]+$/;
+		    if(regex.test(uname.value) == false){
+		    document.getElementById('msg1').innerHTML="field should not be blank and it should contain only alphabets";
+		    return false;
+		    }
+		    else{
+		    document.getElementById('msg1').innerHTML="";
+		    return true;
+		    }
+		}
+		function validateemail(){
+			var email = document.getElementById('email').value;
+			var emailFilter=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		    if (!emailFilter.test(email)) {
+		       document.getElementById('msg2').innerHTML="email field should contain the pattern of example@exe.com";
+		        return false;
+		    }
+		    else
+		    	document.getElementById('msg2').innerHTML="";
+		    	return true;
+		}
+		function validatepassword(){
+			var password = document.getElementById('password').value;
+			var regex=/^([A-Za-z0-9_\.\-])+$/;
+			if (!regex.test(password)) {
+				document.getElementById('msg3').innerHTML="password must be filled with a combination of capital letters, small letters and a combination of special symbols";
+			return false;
+			}
+			else
+				document.getElementById('msg3').innerHTML="";
+			return true;
+		}
+		function validatecpassword(){
+			var cpassword = document.getElementById('cpassword').value;
+			var regex=/^([A-Za-z0-9_\.\-])+$/;
+			if ( password != cpassword ) {
+				document.getElementById('msg4').innerHTML="password must be filled with a combination of capital letters, small letters and a combination of special symbols";
+			return false;
+			}
+			else
+				document.getElementById('msg4').innerHTML="";
+			return true;
+		}
+		function validatefname() {
+			var x=document.getElementById('fname').value;
+		    var regex = /^[a-zA-Z\s]+$/;
+		    if(regex.test(fname.value) == false){
+		    document.getElementById('msg5').innerHTML="field should not be blank and it should contain only alphabets";
+		    return false;
+		    }
+		    else{
+		    document.getElementById('msg5').innerHTML="";
+		    return true;
+		    }
+		}
+		function validatelname(){
+		    var x=document.getElementById('lname');
+		   	var regex = /^[a-zA-Z\s]+$/;
+		    if(regex.test(lname.value) == false){
+		    document.getElementById('msg6').innerHTML="field should contain only alphabets and it should contain only alphabets";
+		    return false;
+		    }
+		    else{
+		    document.getElementById('msg6').innerHTML="";
+		    return true;
+		    }
+		    }
+	</script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+	</body>
+</html>
