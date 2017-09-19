@@ -23,7 +23,6 @@ function subMenu($c){
 			Press 2 for editing contacts
 			Press 3 for viewing contacts 
 			Press 9 to go back to main menu\n";
-										
 		$d = fgets(STDIN);
 		contacts($d);
 	}
@@ -36,6 +35,9 @@ function subMenu($c){
 		$e = fgets(STDIN);
 		cases($e);
 		}
+	}
+function createAccount($z){
+	
 	}
 function validateMainMenu($b){
 	 if($b==1 || $b==2 || $b == 3){ 
