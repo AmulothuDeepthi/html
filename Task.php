@@ -14,13 +14,13 @@ function Welcome()
     $password = readline();
     if($username == 'admin' && $password == 'bhea@123')
     {
-         echo "You have successfully login to your account\n";
-         readChoice();
+	    echo "You have successfully login to your account\n";
+	    readChoice();
     }
     else
     {
-         echo "Invalid credentials\n";
-         welcome();
+        echo "Invalid credentials\n";
+        welcome();
     }
 }
 	readChoice();
@@ -131,7 +131,7 @@ function ContactDetails()
 			case '24':
 				readChoice();
 				break;
-                case '25':
+            case '25':
 				exit();
 				break;
 			default:
