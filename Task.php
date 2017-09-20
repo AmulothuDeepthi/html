@@ -19,8 +19,8 @@ function Welcome()
     }
     else
     {
-        echo "Invalid credentials\n";
-        welcome();
+		echo "Invalid credentials\n";
+	    welcome();
     }
 }
 	readChoice();
