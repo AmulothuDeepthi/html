@@ -47,11 +47,9 @@ function showMenu()
 function showSubMenu($choice) 
 {
 	$modules = array("Create " . $choice,"View " . $choice,"Edit " . $choice,"Go to main menu", );
-	$actions = array("Create", "View", "Edit");
 	$arrlength=count($modules);
-	$arrlength1=count($actions);
 	echo "Please select your choice\n";
-	for($i=1;$i<=$arrlength;$i++){
+	for($i=0;$i<$arrlength;$i++){
 		echo $i+1 . ". Select ";
 		echo $i+1 . " for " . $modules[$i] . " \n";
 	}
@@ -59,15 +57,17 @@ function showSubMenu($choice)
 	$choice1=intval($validateChoice);
 	if(($choice1<=$arrlength) && ($choice1!=0))
 	{
-		if($choice==1)
+		echo "ok";
+		if($choice1==1)
 		{
-			create($choice,$modules);
+			$fields = array('First_Name','Last_Name','ID','Address1','Address2','Website');
+			create($choice,$modules,$fields);
 		}
 		elseif ($choice1==2)
 		{
 			view($choice,$modules);
 		}
-		elseif ($choice==3) 
+		elseif ($choice1==3) 
 		{
 			edit($choice,$modules);
 			# code...
@@ -83,8 +83,17 @@ function showSubMenu($choice)
 		showSubMenu();
 	}
 }
-function actions($choice,$modules)
+function create($choice,$modules,$fields)
 {
-	echo "1\n";
+	echo "create success\n";
+	
+}
+function view($choice,$modules)
+{
+	echo "view success\n";
+}
+function edit($choice,$modules)
+{
+	echo "edit success\n";
 }
 ?>
