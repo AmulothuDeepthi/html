@@ -25,51 +25,52 @@ function Welcome()
 }
 function showMenu()
 {
-	$choice =array("accounts", "contacts", "cases");
-	$arrlength=count($choice);
-	echo "Please select your choice\n";
+	$module =array("accounts", "contacts", "cases");
+	$arrlength=count($module);
+	echo "Please select your module\n";
 	for($i=1; $i <= $arrlength; $i++){
 		echo $i . ". choose " ; 
-		echo $i . " for " . $choice[$i-1] . "\n";
+		echo $i . " for " . $module[$i-1] . "\n";
 	}
-	$validateChoice=readline();
-	$choice1=intval($validateChoice);
-	if(($choice1<=$arrlength) && ($choice1!=0))
+	$validatemodule=readline();
+	$module1=intval($validatemodule);
+	if(($module1<=$arrlength) && ($module1!=0))
 	{
-		showSubMenu($choice[$choice1-1]);
+		showSubMenu($module[$module1-1]);
 	}
 	else
 	{
-		echo "Invalid Choice,Please select again\n";
+		echo "Invalid module,Please select again\n";
 		showMenu();
 	}
 }
-function showSubMenu($choice) 
+function showSubMenu($module) 
 {
-	$modules = array("Create " . $choice,"View " . $choice,"Edit " . $choice,"Go to main menu", );
-	$arrlength=count($modules);
-	echo "Please select your choice\n";
+	$actions = array("Create " . $module,"View " . $module,"Edit " . $module,"Go to main menu", );
+	$arrlength=count($actions);
+	echo "Please select your module\n";
 	for($i=0;$i<$arrlength;$i++){
 		echo $i+1 . ". Select ";
-		echo $i+1 . " for " . $modules[$i] . " \n";
+		echo $i+1 . " for " . $actions[$i] . " \n";
 	}
-	$validateChoice=readline();
-	$choice1=intval($validateChoice);
-	if(($choice1<=$arrlength) && ($choice1!=0))
+	$validatemodule=readline();
+	$module1=intval($validatemodule);
+	if(($module1<=$arrlength) && ($module1!=0))
 	{
-		echo "ok";
-		if($choice1==1)
+		echo "ok\n";
+		if($module1==1)
 		{
-			$fields = array('First_Name','Last_Name','ID','Address1','Address2','Website');
-			create($choice,$modules,$fields);
+			$fields = resource mysql_list_fields ( string $task , string $module [, resource $link_identifier = databaseConnect()]);
+			
+			create($module,$actions,showfields($module));
 		}
-		elseif ($choice1==2)
+		elseif ($module1==2)
 		{
-			view($choice,$modules);
+			view($module,$actions,$fields);
 		}
-		elseif ($choice1==3) 
+		elseif ($module1==3) 
 		{
-			edit($choice,$modules);
+			edit($module,$actions,$fields);
 			# code...
 		}
 		else
@@ -79,20 +80,20 @@ function showSubMenu($choice)
 	}
 	else
 	{
-		echo "Invalid Choice,Please select again\n";
+		echo "Invalid module,Please select again\n";
 		showSubMenu();
 	}
 }
-function create($choice,$modules,$fields)
+function create($module,$actions,showfields($module))
 {
 	echo "create success\n";
-	
+	}
 }
-function view($choice,$modules)
+function view($module,$actions,$fields)
 {
 	echo "view success\n";
 }
-function edit($choice,$modules)
+function edit($module,$actions,$fields)
 {
 	echo "edit success\n";
 }
