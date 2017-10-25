@@ -51,12 +51,15 @@
 	$text=preg_replace('/(\b[a-z])/i','<span style="color:red;">\1</span>',$text );
 	echo $text."<br>";
 	echo".............................................................."."<br><br>";
-	//validation for email
-	$email="mail@example.com";
-	if (filter_var($email,)) {
-		# code...
-	}
-
+	//displaying string, values within the table.
+	$a=1000;
+	$b=5000;
+	$c=10000;
+	echo "<table border=3 cellspacing=1 cellpadding=15>
+	<tr> <td><font color=blue> Salary of Mr. A is</td> <td>$a$</font></td></tr>
+	<tr> <td><font color=blue> Salary of Mr. B is</td> <td>$b$</font></td></tr>
+	<tr> <td><font color=blue> Salary of Mr. C is</td> <td>$c$</font></td></tr>
+	</table>"
 ?>	
 <!DOCTYPE html>
 <html>
