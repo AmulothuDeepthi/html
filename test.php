@@ -5,9 +5,11 @@
 	}
 	$sql="select * from accounts";
 	if($conn->query($sql)){
-		if($rows=$result->fetch_fields()){
+		if($rows= $result->fetch_field_direct()){
 			var_dump($rows);
-
+			echo $rows->table;
+		}else{
+			echo "false";
 		}
 	}
 ?>

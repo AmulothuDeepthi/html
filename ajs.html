@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>ajs</title>
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>  
+</head>
+<body ng-app="myapp">
+	<div ng-controller="HelloController">
+	<h2>Hello {{HelloTo.title}} !</h2>
+	</div>
+	<div ng-app="" ng-init="Firstname='Ajeet'">
+		<p>Input something into the box</p>
+		<p>Fisrst Name: <input type="" name=""></p>		
+	</div>
+<script>
+	angular.module("myapp",[])
+	.controller("HelloController", function($scope){
+		$scope.HelloTo= {};
+		$scope.HelloTo.title="world, Angular JS";
+	})
+</script>
+</body>
+</html>

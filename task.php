@@ -121,19 +121,17 @@ function view($module,$actions,$fieldsarray)
 function delete($module,$actions,$fieldsarray)
 {
 	$connection=databaseConnect();
+	view($module,$actions,$fieldsarray);
 	echo "please enter ID number";
 	$id=readline();
 	$id1=intval($id);
 	print("$id1 \n");
-	mysqli_data_seek($sql, $id1);
 	$sql="delete from $module where id= '$id1'";
-	$result=mysqli_query($connection, $sql);
-	
-	if(mysqli_query($result)==true){
+	if($connection->query($sql)===true){
 		echo "Records were deleted successfully";
 	}else{
 		echo "ERROR:Could not able to execute $sql.".mysqli_error($connection);
 	}
-	mysqli_close($connection);
+	$connection->close();
 }
 ?>	
