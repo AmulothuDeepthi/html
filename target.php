@@ -8,14 +8,14 @@
 	//printing the total number of lines in a file
 	$current_file_name=basename($_SERVER['PHP_SELF']);
 	$no_of_lines=count(file($current_file_name));
-	echo "<strong>" . "Total Number of lines in "."<font color=blue> $current_file_name  </font>". " file are : " . "</strong>" . $no_of_lines. "\n";
-	echo"<strong>".".........................................................."."</strong>".  "\n";
+	echo "Total Number of lines in "."<font color=blue> $current_file_name  </font>". " file are : ". $no_of_lines. "\n";
+	echo"..........................................................".  "\n";
 	echo "Tomorrow I\'ll learn PHP global variables\n" . "This is a bad command:del c:\\*.*".   "\n";
-	echo"<strong>".".........................................................."."</strong>".  "\n";
+	echo"..........................................................".  "\n";
 	$var='PHP Tutorial';
 	//Retrieve name from query string and store to a local variable
 	$name=$_POST['name'];
-	echo "<strong>" . 'clients IP address '. "</strong>";
+	echo 'clients IP address ';
 	//whether ip is from share internet
 	if (!empty($_SERVER['HTTP_CLIENT_IP']))   
 	  {
@@ -33,17 +33,17 @@
 	  }
 	echo $ip_address.  "\n";
 	//which browser the user is using
-	echo "<strong>" . "Your User Agent is :". "</strong>" . $_SERVER ['HTTP_USER_AGENT'].  "\n";
+	echo "Your User Agent is :". $_SERVER ['HTTP_USER_AGENT'].  "\n";
 	//current file name of the user
-	echo "<strong>" . "current file name is : ". "</strong>" . $current_file_name.  "\n";
+	echo "current file name is : ".$current_file_name.  "\n";
 	//components of url
 	$url='https://www.bhea.com/life at bhea/events';
 	$url=parse_url($url);
-	echo "<strong>" . 'scheme is : ' . "</strong>" . $url['scheme'].  "\n";
-	echo "<strong>" . 'host is : '  . "</strong>" . $url['host'].  "\n";
-	echo "<strong>" . 'path is : '  . "</strong>"  . $url['path']. "\n";
+	echo 'scheme is : '. $url['scheme'].  "\n";
+	echo 'host is : ' . $url['host'].  "\n";
+	echo 'path is : '  . $url['path']. "\n";
 	//checking whether https is enabled or http is enabled.
-	echo "<strong>"."checking whether http or https is enabled : " ."</strong>";
+	echo "checking whether http or https is enabled : " ;
 	if(!empty($_SERVER['https'])){
 		echo "https is enabled \n";
 	}
@@ -53,14 +53,14 @@
 	//printing the last modified date of the file 
 	$file_last_modified = filemtime($current_file_name);
 	echo "Last modified ".date("l, dS F, Y, h:ia",$file_last_modified).  "\n";
-	echo"<strong>".".........................................................."."</strong>".  "\n";
+	echo"..........................................................".  "\n";
 	//changing the colors of the letters in a word.
 	$text='PHP Tutorial';
-	echo "<strong>" ."Changing the color of the letters in a word"."</strong>". "\n";
+	echo "Changing the color of the letters in a word". "\n";
 	echo $text. "\n";
 	$text=preg_replace('/(\b[a-z])/i','<span style="color:red;">\1</span>',$text);
 	echo $text. "\n";
-	echo"<strong>".".........................................................."."</strong>".  "\n";
+	echo"..........................................................".  "\n";
 	//printing the sequence of values using for loop
 	$z='A00';
 	for($n=0;$n<5;$n++){
@@ -72,15 +72,15 @@
 	echo  "\n";
 	//finding the biggest number among 10,20,30
 	$big=($a>$b)?(($a>$c)?$a:$c):(($b>$c)?$b:$c);
-	echo "<strong>".$big. "</strong>"." is the biggest number among $a, $b, $c ".  "\n";
+	echo $big." is the biggest number among $a, $b, $c ".  "\n";
 	//Printing the full url
 	$full_url="http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-	echo "<strong>"."Full url is : ". "</strong>".$full_url. "\n";
+	echo "Full url is : ".$full_url. "\n";
 	//printing the name of the current user
-	echo "<strong>"."Name of the current user is: ". "</strong>" .get_current_user(). "\n";
+	echo "Name of the current user is: " .get_current_user(). "\n";
 	//printing the document root directory
 	$rd=getenv('DOCUMENT_ROOT');
-	echo "<strong>"."document root directory is : "."</strong>".$rd. "\n";
+	echo "document root directory is : ".$rd. "\n";
 	// Printing the Operating system PHP is running on
 	echo php_uname(). "\n";
 	echo PHP_OS. "\n";
@@ -90,14 +90,14 @@
 	}else{
 		echo "This is a server not using Linux!". "\n";
 	}
-	echo"<strong>".".........................................................."."</strong>".  "\n";
+	echo"..........................................................".  "\n";
 	// printing the php credits
 	$credit=phpcredits(CREDITS_ALL - CREDITS_FULLPAGE);
 	echo $credit. "\n";
-	echo"<strong>".".........................................................."."</strong>".  "\n";
+	echo"..........................................................".  "\n";
 	// printing the directory path used for temporary files
 	$temp_file=tempnam(sys_get_temp_dir(),'TUX');
-	echo "<strong>"."Path for temporary files storage is : "."</strong>".$temp_file. "\n";
+	echo "Path for temporary files storage is : ".$temp_file. "\n";
 	// swapping two numbers
 	echo "Numbers before swapping are a= " . $a ." , b=" . $b. "\n";
 	$temp=$a;
@@ -105,7 +105,7 @@
 	$b=$temp;
 	echo "Numbers after swapping are a= " . $a ." , b=" . $b. "\n"; 
 	// checking whether the given number is armstrong or not 
-	echo"<strong>".".........................................................."."</strong>".  "\n";
+	echo"..........................................................".  "\n";
 	$le=strlen($a);
 	$sum=0;
 	// $a=string($a);
@@ -119,7 +119,7 @@
 		echo "not an armstrong number";
 	}
 	//displaying string, values within the table.
-	echo "<strong>"."entering data into a table using php script"."</strong>". "\n";
+	echo "entering data into a table using php script". "\n";
 	// echo "<font color="white">.................</font>";
 	echo "<table border=3 cellspacing=1 cellpadding=15>
 	<tr> <td><font color=blue> Salary of Mr. A is</td> <td>$a$</font></td></tr>
