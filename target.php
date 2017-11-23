@@ -275,9 +275,46 @@
 	print_r($mycolor);
 	echo"---------------------------------------------------------- \n";
 	// displaying all the numbers between 200 and 300 which are divisible by 4
-	echo "Numbers divisible by 4 are : ".implode(",",range(200,250,4))."\n";
+	echo "Numbers divisible by 4 are : ".implode(", ",range(200,250,4))."\n";
 	echo"---------------------------------------------------------- \n";
-	
+	// printing the shortest/longest string length from the array
+	$my_array=array("abcde","abc","de","hjjjjj","g","wer");
+	$new_array=array_map('strlen',$my_array);
+	echo "shortest string length is : ".min($new_array)."\n";
+	echo "longest string length is : ".max($new_array)."\n";
+	echo"---------------------------------------------------------- \n";
+	// displaying random numbers with in the given range
+	$n=range(1,30);
+	shuffle($n);
+	echo "display of random numbers with in the given range : ";
+	for($x=0;$x<20;$x++){
+		echo $n[$x].', ';
+	}
+	echo "\n";
+	echo"---------------------------------------------------------- \n";
+	// displaying the largest key jin an array
+	$ceu = array( "Italy"=>"Rome", "Luxembourg"=>"Luxembourg", "Belgium"=> "Brussels",
+	"Denmark"=>"Copenhagen", "Finland"=>"Helsinki", "France" => "Paris", "Slovakia"=>"Bratislava",
+	"Slovenia"=>"Ljubljana", "Germany" => "Berlin", "Greece" => "Athens", "Ireland"=>"Dublin",
+	"Netherlands"=>"Amsterdam", "Portugal"=>"Lisbon", "Spain"=>"Madrid", "Sweden"=>"Stockholm",
+	"United Kingdom"=>"London", "Cyprus"=>"Nicosia", "Lithuania"=>"Vilnius", "Czech Republic"=>"Prague", "Estonia"=>"Tallin", "Hungary"=>"Budapest", "Latvia"=>"Riga", "Malta"=> "Valetta","Austria" => "Vienna", "Poland"=>"Warsaw") ;
+	echo "key values are : ";
+	foreach ($ceu as $key => $value) {
+		echo $key.", ";
+		# code...
+	}
+	echo "\n";
+	$max_key=max(array_keys($ceu));
+	echo "maximum key among the keys are : ".$max_key."\n";
+	echo"---------------------------------------------------------- \n";
+	// displaying minimum value in an array
+	print_r("Minimum value in the array is : ".min_value(array(-1,0,1,12,-100,1))."\n");
+	echo"---------------------------------------------------------- \n";
+	// Floor decimal numbers with precision
+	print_r("1.155 After precision adjustment : ".floorDec(1.155,2,".")."\n");
+	print_r("100.25781 After precision adjustment : ".floorDec(100.25781,4,".")."\n");
+	print_r("2.9636 After precision adjustment : ".floorDec(-2.9636,3,".")."\n");
+	echo"---------------------------------------------------------- \n";
 	//displaying string, values within the table.
 	// echo "entering data into a table using php script". "\n";
 	// echo "<font color="white">.................</font>";
@@ -317,6 +354,21 @@ function merge_arrays_by_index($x,$y){
   		$narray[$key]=($case==CASE_UPPER?strtoupper($value):strtolower($value));
   	}
   	return $narray;
+  }
+  function min_value(array $values){
+  	return min(array_diff(array_map('intval',$values),array(0)));
+  }
+  function floorDec($number,$precision,$separator){
+  	$number_part=explode($separator, $number);
+  	$number_part[1]=substr_replace($number_part[1], $separator, $precision,0);
+  	if($number_part[0]>=0){
+  		$number_part[1]=floor($number_part[1]);
+  	}
+  	else{
+  		$number_part[1]=ceil($number_part[1]);
+  	}
+  	$ceil_number=array($number_part[0],$number_part[1]);
+  	return implode($separator,$ceil_number);
   }
 ?>	
 <!DOCTYPE html>
