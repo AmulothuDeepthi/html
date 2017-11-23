@@ -315,6 +315,13 @@
 	print_r("100.25781 After precision adjustment : ".floorDec(100.25781,4,".")."\n");
 	print_r("2.9636 After precision adjustment : ".floorDec(-2.9636,3,".")."\n");
 	echo"---------------------------------------------------------- \n";
+	// Printing "second" and "Red" from the given array
+	$color1 = array ( "color" => array ( "a" => "Red", "b" => "Green", "c" => "White"),
+	"numbers" => array ( 1, 2, 3, 4, 5, 6 ),
+	"holes" => array ( "First", 5 => "Second", "Third"));
+	echo $color1["holes"][5]."\n";
+	echo $color1["color"]["a"]."\n";
+	echo"---------------------------------------------------------- \n";
 	//displaying string, values within the table.
 	// echo "entering data into a table using php script". "\n";
 	// echo "<font color="white">.................</font>";
