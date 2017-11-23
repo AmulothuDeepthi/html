@@ -1,7 +1,7 @@
 <?php
 	//PHP version of the user
 	echo 'php version is  ' . phpversion()."\n";
-	echo".........................................................". "\n";
+	echo"---------------------------------------------------------- \n";
 	$a=153;
 	$b=5000;
 	$c=10000;
@@ -9,9 +9,9 @@
 	$current_file_name=basename($_SERVER['PHP_SELF']);
 	$no_of_lines=count(file($current_file_name));
 	echo "Total Number of lines in "."<font color=blue> $current_file_name  </font>". " file are : ". $no_of_lines. "\n";
-	echo"..........................................................".  "\n";
+	echo"---------------------------------------------------------- \n";
 	echo "Tomorrow I\'ll learn PHP global variables\n" . "This is a bad command:del c:\\*.*".   "\n";
-	echo"..........................................................".  "\n";
+	echo"---------------------------------------------------------- \n";
 	$var='PHP Tutorial';
 	//Retrieve name from query string and store to a local variable
 	$name=$_POST['name'];
@@ -53,14 +53,14 @@
 	//printing the last modified date of the file 
 	$file_last_modified = filemtime($current_file_name);
 	echo "Last modified ".date("l, dS F, Y, h:ia",$file_last_modified).  "\n";
-	echo"..........................................................".  "\n";
+	echo"---------------------------------------------------------- \n";
 	//changing the colors of the letters in a word.
 	$text='PHP Tutorial';
 	echo "Changing the color of the letters in a word". "\n";
 	echo $text. "\n";
 	$text=preg_replace('/(\b[a-z])/i','<span style="color:red;">\1</span>',$text);
 	echo $text. "\n";
-	echo"..........................................................".  "\n";
+	echo"---------------------------------------------------------- \n";
 	//printing the sequence of values using for loop
 	$z='A00';
 	for($n=0;$n<5;$n++){
@@ -90,12 +90,11 @@
 	}else{
 		echo "This is a server not using Linux!". "\n";
 	}
-	echo"..........................................................".  "\n";
+	echo"---------------------------------------------------------- \n";
 	// printing the php credits
 	$credit=phpcredits(CREDITS_ALL - CREDITS_FULLPAGE);
 	echo $credit. "\n";
-	echo"..........................................................".  "\n";
-	// printing the directory path used for temporary files
+	echo"---------------------------------------------------------- \n";
 	$temp_file=tempnam(sys_get_temp_dir(),'TUX');
 	echo "Path for temporary files storage is : ".$temp_file. "\n";
 	// swapping two numbers
@@ -105,7 +104,7 @@
 	$b=$temp;
 	echo "Numbers after swapping are a= " . $a ." , b=" . $b. "\n"; 
 	// checking whether the given number is armstrong or not 
-	echo"..........................................................".  "\n";
+	echo"---------------------------------------------------------- \n";
 	$le=strlen($a);
 	$sum=0;
 	// $a=string($a);
@@ -118,14 +117,207 @@
 	}else{
 		echo "not an armstrong number";
 	}
+	echo"---------------------------------------------------------- \n";
+	$color = array('white', 'green', 'red', 'blue', 'black');
+	echo "The memory of that scene for me is like a frame of film forever frozen at that moment: the $color[2] carpet, the $color[1] lawn, the $color[0] house, the leaden sky. The new president and his first lady. - Richard M. Nixon"."\n";
+	echo"---------------------------------------------------------- \n";
+	// php script to display the values in an array in unordered list
+	foreach ($color as $c) {
+		echo $c;
+		# code...
+	}
+	sort($color);
+	echo "<ul>";
+	foreach ($color as $y) {
+		echo "<li>$y</li>";
+		# code...
+	}
+	echo "</ul>";
+	echo"---------------------------------------------------------- \n";
+	// printing the country Names and its capitals and sorting the names based on their capitals of the country
+	$ceu = array( "Italy"=>"Rome", "Luxembourg"=>"Luxembourg",
+	"Belgium"=> "Brussels", "Denmark"=>"Copenhagen",
+	"Finland"=>"Helsinki", "France" => "Paris",
+	"Slovakia"=>"Bratislava", "Slovenia"=>"Ljubljana",
+	"Germany" => "Berlin", "Greece" => "Athens",
+	"Ireland"=>"Dublin", "Netherlands"=>"Amsterdam",
+	"Portugal"=>"Lisbon", "Spain"=>"Madrid",
+	"Sweden"=>"Stockholm", "United Kingdom"=>"London",
+	"Cyprus"=>"Nicosia", "Lithuania"=>"Vilnius",
+	"Czech Republic"=>"Prague", "Estonia"=>"Tallin",
+	"Hungary"=>"Budapest", "Latvia"=>"Riga","Malta"=>"Valetta",
+	"Austria" => "Vienna", "Poland"=>"Warsaw") ;
+	asort($ceu) ;
+	foreach($ceu as $country => $capital)
+	{
+	echo "The capital of $country is $capital"."\n" ;
+	}
+	echo"---------------------------------------------------------- \n";
+	// deleting the values from an array and sorting it again
+	$x = array(1, 2, 3, 4, 5);
+	var_dump($x);
+	unset($x[3]);
+	$x=array_values($x);
+	echo '';
+	var_dump($x);
+	$x = array(1, 2, 3, 4, 5);
+	echo"---------------------------------------------------------- \n";
+	// Printing the first element of the array
+	$color=array(4=>'white', 6=>'green', 11=>'red');
+	echo reset($color)."\n";
+	echo"---------------------------------------------------------- \n";
+	// decoding the JSON string
+	$a = '{"Title": "The Cuckoos Calling",
+	"Author": "Robert Galbraith",
+	"Detail":
+	{ 
+	"Publisher": "Little Brown"
+	 }
+	  }';
+	  $j1=json_decode($a,true);
+	 array_walk_recursive($j1, "decode");
+	echo"---------------------------------------------------------- \n";
+	// Inserting a new item in the array
+	echo "original array is : "."\n";
+	foreach($x as $a)
+	{echo $a;}
+	echo "\n";
+	$inserted ='$';
+	array_splice($x,3,0,$inserted);
+	echo "After inserting the array values are as follows:"."\n";
+	foreach($x as $a)
+	{echo $a;}
+	echo "\n";
+	echo"---------------------------------------------------------- \n";
+	// printing the array in 
+	// ascending order sort by value
+	echo "Associative array : Ascending order sort by value \n";
+	$array2=array("Sophia"=>"31","Jacob"=>"41", "William"=>"39","Ramesh"=>"40");
+	asort($array2);
+	foreach ($array2 as $y => $y_value) {
+		echo "age of ".$y."is :".$y_value."\n";
+		# code...
+	}
+	// ascending order sort by key
+	echo "Associative array : Ascending order sort by key \n";
+	ksort($array2);
+	foreach ($array2 as $y => $y_value) {
+		echo "age of ".$y."is :".$y_value."\n";
+		# code...
+	}
+	// descending order sort by value
+	echo "Associative array : Descending order sort by value \n";
+	arsort($array2);
+	foreach ($array2 as $y => $y_value) {
+		echo "age of ".$y."is :".$y_value."\n";
+		# code...
+	}
+	// descending order sort by key	
+	echo "Associative array : Descending order sort by key \n";
+	krsort($array2);
+	foreach ($array2 as $y => $y_value) {
+		echo "age of ".$y."is :".$y_value."\n";
+		# code...
+	}
+	echo"---------------------------------------------------------- \n";
+	// calculating and displaying the average temperature, sorted array, five lowest and five highest temperatures in the following array
+	$temperature="78,60,62,68,71,68,73,85,66,64,76,63,81,76,73,68,72,73,75,65,74,63,67,65,64,68,73,75,79,73";
+	$temp_arr=explode(',', $temperature);
+	$temp_arr_length=count($temp_arr);
+	$tot_temp=0;
+	foreach ($temp_arr as $temp) {
+		$tot_temp +=$temp;
+		# code...
+	}
+	$avg_temp=$tot_temp/$temp_arr_length;
+	echo "Average temperature is : ". $avg_temp."\n";
+	sort($temp_arr);
+	echo "sorted array is :  \n";
+	for ($i=0; $i < $temp_arr_length; $i++) { 
+		echo $temp_arr[$i].",";
+		# code...
+	}
+	echo "\n";
+	echo "Five lowest temperatures are : ";
+	for ($i=0; $i < 5; $i++) { 
+		echo $temp_arr[$i].",";
+		# code...
+	}
+	echo "\n";
+	echo "Five highest temperatures are : ";
+	for ($i=($temp_arr_length-5); $i < ($temp_arr_length); $i++) { 
+		echo $temp_arr[$i].",";
+		# code...
+	}
+	echo "\n";
+	echo"---------------------------------------------------------- \n";
+	// Merging the two arrays by index
+	$array1=array(array(77,87),array(23,45));
+	$array3=array("general","com");
+	$arr_length=count($array1);
+	$arr_length1=count($array3);
+	echo "original array1 is : ";
+	echo implode(" ",$array1)."\n";
+	echo "original array2 is : ";
+	echo implode(" ",$array3)."\n";
+	echo '<pre>';
+	Print_r(array_map('merge_arrays_by_index', $array3,$array1));
+	echo"---------------------------------------------------------- \n";
+	// changing the array values to upper or lower case
+	$colors=array('A'=>'Blue', 'B'=>'Green','C'=>'Red');
+	echo "Actual array";
+	print_r($colors);
+	echo "Values in lower case are : ";
+	$mycolor=change_case($color,CASE_LOWER);
+	print_r($mycolor);
+	echo "Values in upper case are : ";
+	$mycolor=change_case($color,CASE_UPPER);
+	print_r($mycolor);
+	echo"---------------------------------------------------------- \n";
+	// displaying all the numbers between 200 and 300 which are divisible by 4
+	echo "Numbers divisible by 4 are : ".implode(",",range(200,250,4))."\n";
+	echo"---------------------------------------------------------- \n";
+	
 	//displaying string, values within the table.
-	echo "entering data into a table using php script". "\n";
+	// echo "entering data into a table using php script". "\n";
 	// echo "<font color="white">.................</font>";
-	echo "<table border=3 cellspacing=1 cellpadding=15>
-	<tr> <td><font color=blue> Salary of Mr. A is</td> <td>$a$</font></td></tr>
-	<tr> <td><font color=blue> Salary of Mr. B is</td> <td>$b$</font></td></tr>
-	<tr> <td><font color=blue> Salary of Mr. C is</td> <td>$c$</font></td></tr>
-	</table>"
+	// echo "<table border=3 cellspacing=1 cellpadding=15>
+	// <tr> <td><font color=blue> Salary of Mr. A is</td> <td>$a$</font></td></tr>
+	// <tr> <td><font color=blue> Salary of Mr. B is</td> <td>$b$</font></td></tr>
+	// <tr> <td><font color=blue> Salary of Mr. C is</td> <td>$c$</font></td></tr>
+	// </table>"
+function decode($value,$key){
+  	echo "$key : $value"."\n";
+  }
+function merge_arrays_by_index($x,$y){
+	$temp=array();
+	$temp[]=$x;
+	if(is_scalar($y))
+	{
+		$temp[]=$y;
+	}
+	else{
+		foreach ($y as $k => $v) {
+			$temp[]=$v;
+			# code...
+		}
+	}
+	return $temp;
+  }
+  function change_case($input,$case){
+  	$narray=array();
+  	if(!is_array($input)){
+  		return $narray;
+  	}
+  	foreach($input as $key=>$value){
+  		if(is_array($value)){
+  			$narray[$key]=change_case($value,$case);
+  			continue;
+  		}
+  		$narray[$key]=($case==CASE_UPPER?strtoupper($value):strtolower($value));
+  	}
+  	return $narray;
+  }
 ?>	
 <!DOCTYPE html>
 <html>
