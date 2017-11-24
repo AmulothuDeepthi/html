@@ -288,7 +288,11 @@
 	shuffle($n);
 	echo "display of random numbers with in the given range : ";
 	for($x=0;$x<20;$x++){
-		echo $n[$x].', ';
+		if($x<19){
+			echo $n[$x].', ';
+		}else{
+			echo $n[$x];
+		}
 	}
 	echo "\n";
 	echo"---------------------------------------------------------- \n";
@@ -322,6 +326,102 @@
 	echo $color1["holes"][5]."\n";
 	echo $color1["color"]["a"]."\n";
 	echo"---------------------------------------------------------- \n";
+	// Sorting an array according to another array
+	$order[0]=1;
+	$order[1]=3;
+	$order[2]=4;
+	$order[3]=2;
+	$array[0] = 2;
+	$array[1] = 1; 
+	$array[2] = 3; 
+	$array[3] = 4; 
+	$array[4] = 2; 
+	$array[5] = 1; 
+	$array[6] = 2; 
+	usort($array,"list_cmp");
+	print_r($array);
+	echo"---------------------------------------------------------- \n";
+	// displaying 1-2-3-4-5-6-7-8-9-10 with no hyphen at the start and end 
+	for($i=0;$i<=10;$i++){
+		if($i<10){
+			echo $i."-";
+		}else{
+			echo $i."\n";
+		}
+	}
+	echo"---------------------------------------------------------- \n";
+	// using loop adding the integers between 1 and 30 and displaying the total
+	$sum=0;
+	for($i=0;$i<=30;$i++){
+		$sum +=$i;
+	}
+	echo "The sum of numbers between 1 and 30 is : $sum"."\n";
+	echo"---------------------------------------------------------- \n";
+	// Printing the patterns using nested for loop
+	for($i=1;$i<=5;$i++){
+		for($j=1;$j<=$i;$j++){
+			echo "* ";
+		}
+		echo "\n";
+	}
+	echo"---------------------------------------------------------- \n";
+	// Printing the repeated patterns using nested for loop
+	$n=5;
+	for($i=1;$i<=$n;$i++){
+		for($j=1;$j<=$i;$j++){
+			echo "* ";
+		}
+		echo "\n";
+	}
+	for($i=$n;$i>=1;$i--){
+		for($j=1;$j<=$i;$j++){
+			echo "* ";
+		}
+		echo "\n";
+	}
+	echo"---------------------------------------------------------- \n";
+	// calculating and printing the factorial of a number
+	$n=5;
+	$x=1;
+	for($i=1;$i<$n;$i++){
+		$x *=($i+1);
+	}
+	echo "factorial of number 5 is : $x"."\n";
+	echo"---------------------------------------------------------- \n";
+	// printing all the two digit numbers using loop separated by a delimiter
+	for($i=0;$i<10;$i++){
+		for($j=0;$j<10;$j++){
+			echo $i.$j.", ";
+		}
+	}
+	echo" \n ---------------------------------------------------------- \n";
+	// counting the required characters in a specified word
+	$text="Bhea Knowledge technologies";
+	$search_char="e";
+	$count=0;
+	for($x=0;$x<strlen($text);$x++){
+		if(substr($text,$x,1)==$search_char){
+			$count =$count+1;
+		}
+	}
+	echo $count."\n";
+	echo"---------------------------------------------------------- \n";
+	// displaying the numbers from 1 to 50 and printing "FIZZ" in the place of multiples of 3, "BUZZ" in the place of multiples of 5, "FIZZBUZZ"  in the place of both multiples of 3 and 5
+	for($i=1;$i<=50;$i++){
+		if($i%3 == 0 && $i%5 ==0){
+			echo " FIZZBUZZ".", ";
+		}
+		elseif($i%3 ==0){
+			echo" FIZZ".", ";
+		}
+		elseif($i%5==0){
+			echo " BUZZ".", ";
+		}
+		else{
+			echo $i.", ";
+		}
+	}
+	echo"\n ---------------------------------------------------------- \n";
 	//displaying string, values within the table.
 	// echo "entering data into a table using php script". "\n";
 	// echo "<font color="white">.................</font>";
@@ -348,36 +448,51 @@ function merge_arrays_by_index($x,$y){
 	}
 	return $temp;
   }
-  function change_case($input,$case){
-  	$narray=array();
-  	if(!is_array($input)){
-  		return $narray;
-  	}
-  	foreach($input as $key=>$value){
-  		if(is_array($value)){
-  			$narray[$key]=change_case($value,$case);
-  			continue;
-  		}
-  		$narray[$key]=($case==CASE_UPPER?strtoupper($value):strtolower($value));
-  	}
-  	return $narray;
-  }
-  function min_value(array $values){
-  	return min(array_diff(array_map('intval',$values),array(0)));
-  }
-  function floorDec($number,$precision,$separator){
-  	$number_part=explode($separator, $number);
-  	$number_part[1]=substr_replace($number_part[1], $separator, $precision,0);
-  	if($number_part[0]>=0){
-  		$number_part[1]=floor($number_part[1]);
-  	}
-  	else{
-  		$number_part[1]=ceil($number_part[1]);
-  	}
-  	$ceil_number=array($number_part[0],$number_part[1]);
-  	return implode($separator,$ceil_number);
-  }
-?>	
+function change_case($input,$case){
+	$narray=array();
+	if(!is_array($input)){
+		return $narray;
+	}
+	foreach($input as $key=>$value){
+		if(is_array($value)){
+			$narray[$key]=change_case($value,$case);
+			continue;
+		}
+		$narray[$key]=($case==CASE_UPPER?strtoupper($value):strtolower($value));
+	}
+	return $narray;
+}
+function min_value(array $values){
+	return min(array_diff(array_map('intval',$values),array(0)));
+}
+function floorDec($number,$precision,$separator){
+	$number_part=explode($separator, $number);
+	$number_part[1]=substr_replace($number_part[1], $separator, $precision,0);
+	if($number_part[0]>=0){
+		$number_part[1]=floor($number_part[1]);
+	}
+	else{
+		$number_part[1]=ceil($number_part[1]);
+	}
+	$ceil_number=array($number_part[0],$number_part[1]);
+	return implode($separator,$ceil_number);
+}
+function list_cmp($a,$b){
+	global $order;
+	foreach($order as $key=>$value){
+		if($a==$value){
+			return 0;
+			break;
+		}
+		if($b==$value){
+			return 1;
+			break;
+		}
+	}
+}
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -394,7 +509,7 @@ function merge_arrays_by_index($x,$y){
 		<input type="submit" name="submit" value="submit name">
 	</form>
 	<h3><?php echo "Hello $name". "\n"; 
-		echo"................................................................".  "\n";
+		echo"---------------------------------------------------------- \n";
 	?></h3>
 </body>
 </html>
