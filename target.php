@@ -422,6 +422,28 @@
 		}
 	}
 	echo"\n ---------------------------------------------------------- \n";
+	// Printing factorial of a number
+	print_r(factorial(4)."\n");
+	echo"\n ---------------------------------------------------------- \n";
+	// Checking whether the number is prime or not
+	$m=3;
+	$l=IsPrime(3);
+	if($l==0)
+		echo "$m is not a Prime number..... \n";
+	else
+		echo "$m is a prime number........ \n";
+	echo"\n ---------------------------------------------------------- \n";
+	// Reversing a string
+	print_r("Reverse string of '1234' is ".reverse_string('1234')."\n");
+	echo"\n ---------------------------------------------------------- \n";
+	// sorting an array
+	print_r("Original array is : ".array($p)."\n");
+	print_r(array_sort($p));
+	echo"\n ---------------------------------------------------------- \n";
+	// function that checks if a string is all lower case
+	var_dump(is_str_lowercase('abc def ghi'));
+	var_dump(is_str_lowercase('abc dEf ghi'));
+	echo"\n ---------------------------------------------------------- \n";
 	//displaying string, values within the table.
 	// echo "entering data into a table using php script". "\n";
 	// echo "<font color="white">.................</font>";
@@ -490,7 +512,53 @@ function list_cmp($a,$b){
 		}
 	}
 }
-
+function factorial($n){
+	if($n==0){
+		return 1;
+	}
+	else{
+		return $n*factorial($n-1);
+	}
+}
+function IsPrime($n){
+	for($x=2;$x<$n;$x++){
+		if($n%$x ==0){
+			return 0;
+		}
+	}
+	return 1;
+}
+function reverse_string($str1){
+	$n=strlen($str1);
+	if($n==1){
+		return $str1;
+	}
+	else{
+		$n--;
+		return reverse_string(substr($str1,1,$n)).substr($str1,0,1);
+	}
+}
+function array_sort($a){
+	for($x=0;$x<count($a);++$x){
+		$min=$x;
+		for($y=$x+1;$y<count($a);++$y){
+			if($a[$y]<$a[$min]){
+				$temp=$a[$min];
+				$a[$min]=$a[$y];
+				$a[$y]=$temp;
+			}
+		}
+	}
+	return $a;
+}
+function is_str_lowercase($str1){
+	for($sc=0;$sc<strlen($str1);$sc++){
+		if(ord($str1[$sc])>=ord('A')&& ord($str1[$sc])<=ord('Z')){
+			return false;
+		}
+	}
+	return true;
+}
 ?>
 
 <!DOCTYPE html>
