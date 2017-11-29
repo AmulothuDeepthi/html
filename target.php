@@ -444,6 +444,34 @@
 	var_dump(is_str_lowercase('abc def ghi'));
 	var_dump(is_str_lowercase('abc dEf ghi'));
 	echo"\n ---------------------------------------------------------- \n";
+	// Checking whether the given number is a palindrome or not 
+	echo "Madam is a ".check_palindrome('madam')."\n";
+	echo"\n ---------------------------------------------------------- \n";
+	// displaying a string using classes
+	$userclass= new MyClass;
+	echo"\n ---------------------------------------------------------- \n";
+	// Displaying a string using classes with arguments
+	$mymessage=new user_message();
+	echo $mymessage->introduce('Scott')."\n";
+	echo"\n ---------------------------------------------------------- \n";
+	// calculating the difference between two dates
+	$sdate=new DateTime("1981-11-03");
+	$edate=new DateTime("2013-09-03");
+	$interval=$sdate->diff($edate);
+	echo "Difference : ".$interval->y . "years, " . $interval->m. "months, ".$interval->d."days ";
+	echo"\n ---------------------------------------------------------- \n";
+	// adding, subtracting, multiplying two numbers by passing those values as arguments to the class
+	$mycalc=new MyCalculator(12,6);
+	echo "Sum of (12,6) is : ".$mycalc->add()."\n";
+	echo "multiplication of (12,6) is : ".$mycalc->multiply()."\n";
+	echo "Subtraction of (12,6) is : ".$mycalc->subtract()."\n";
+	echo "Division of (12,6) is : ".$mycalc->divide()."\n";
+	echo"\n ---------------------------------------------------------- \n";
+	// Converting string to date and datetime
+	$dt = DateTime::createFromFormat('m-d-Y','12-08-2004')->format('Y-m-d');
+	echo $dt;
+	echo"\n ---------------------------------------------------------- \n";
+	// 
 	//displaying string, values within the table.
 	// echo "entering data into a table using php script". "\n";
 	// echo "<font color="white">.................</font>";
@@ -558,6 +586,42 @@ function is_str_lowercase($str1){
 		}
 	}
 	return true;
+}
+function check_palindrome($string){
+	if($string==strrev($string))
+		return "Palindrome";
+	else
+		return "Not a Palindrome";
+}
+class MyClass{
+		public function __construct(){
+			echo "MyClass class has initialised ! \n";
+		}
+}
+class user_message{
+	public $message='Hello All, I am ';
+	public function introduce($name){
+		return $this->message.$name;
+	}
+}
+class MyCalculator{
+	private $_fval, $_sval;
+	public function __construct($fval, $sval){
+		$this->_fval=$fval;
+		$this->_sval=$sval;
+	}
+	public function add(){
+		return $this->_fval+$this->_sval;
+	}
+	public function subtract(){
+		return $this->_fval-$this->_sval;
+	}
+	public function multiply(){
+		return $this->_fval* $this->_sval;
+	}
+	public function divide(){
+		return $this->_fval / $this->_sval;
+	}
 }
 ?>
 
