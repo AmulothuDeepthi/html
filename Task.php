@@ -1,4 +1,6 @@
 <?php
+include_once "/home/deepthi/html/LucidFrame/Console/ConsoleTable.php";
+
 function databaseConnect()
 {
     $conn = mysqli_connect('localhost','root','bhea@123','task') or die('database connection failed');
@@ -10,8 +12,7 @@ function Welcome()
 {
 	echo "Username: ";
 	$username = readline();
-    echo "Password: ";
-    $password = readline();
+    $password = ask_hidden( 'password: ' );
     if($username == 'admin' && $password == 'bhea@123')
     {
 	    echo "You have successfully login to your account\n";
@@ -24,6 +25,13 @@ function Welcome()
     }
 }
 	readChoice();
+function ask_hidden( $prompt ) {
+	echo $prompt;
+	echo "\033[30;40m";  // black text on black background
+	$input = fgets( STDIN );
+	echo "\033[0m";      // reset
+	return rtrim( $input, "\n" );
+}
 function  readChoice(){
 	echo "Please select your Choice\n";
 	echo "Choose 1 to select Accounts\n";
@@ -190,10 +198,23 @@ function createAccount()
 }
 function viewAccount()
 {
+	$tbl = new LucidFrame\Console\ConsoleTable();
 	$connection=databaseConnect();
 	$query="select * from  accounts";
 	$result=mysqli_query($connection, $query);
 	$count=0;
+	
+	$tbl->setHeaders(
+    array('first_name', 'last_name','id','address1','address2','website')
+		);
+		while($row=mysqli_fetch_array($result))
+		{
+			$tbl->addRow(array(row['first_name'], row['last_name'], row['id'], row['address1'], row['address2'], row['website']));
+		}
+	echo $tbl->getTable();
+	
+	
+	
 	while ($row=mysqli_fetch_array($result)) 
 	{
 		$count=$count+1;
