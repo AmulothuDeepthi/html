@@ -202,29 +202,29 @@ function viewAccount()
 	$connection=databaseConnect();
 	$query="select * from  accounts";
 	$result=mysqli_query($connection, $query);
-	$count=0;
-	
-	$tbl->setHeaders(
-    array('first_name', 'last_name','id','address1','address2','website')
-		);
-		while($row=mysqli_fetch_array($result))
+	$k_array=array();
+	while ($fieldinfo=mysqli_fetch_field($result))
+    {
+    printf("Name: %s\n",$fieldinfo->name);
+    array_push($k_array, $fieldinfo->name);
+    }
+    $tbl->setHeaders($k_array);
+	while($row=mysqli_fetch_assoc($result)) 
 		{
-			$tbl->addRow(array(row['first_name'], row['last_name'], row['id'], row['address1'], row['address2'], row['website']));
+			$v_array=array();
+			foreach ($row as $key => $value) {
+				array_push($v_array, $value);
+			}
+			$arraystring = implode(',',$v_array);
+			print_r($arraystring."\n");
+			$tbl->addRow($v_array);
 		}
 	echo $tbl->getTable();
-	
-	
-	
-	while ($row=mysqli_fetch_array($result)) 
-	{
-		$count=$count+1;
-		echo "Row number $count\n";
-		print_r($row);
-	}
 	echo "Please press R to view again\n";
 	echo "enter 00 to goto main menu";
 	$c=readline();
 	if ($c=='R') 
+			
 	{
 		return(viewAccount());
 	}

@@ -1,7 +1,8 @@
 <?php
+include_once "/home/deepthi/html/LucidFrame/Console/ConsoleTable.php";
 function databaseConnect()
 {
-    $conn = mysqli_connect('localhost','root','bhea@123','target') or die('database connection failed');
+    $conn = mysqli_connect('localhost','root','bhea@123','task') or die('database connection failed');
     return $conn;
 }
 echo "Welcome to SugarCRM 7.9.2\n";
@@ -10,8 +11,7 @@ function Welcome()
 {
 	echo "Username: ";
 	$username = readline();
-    echo "Password: ";
-    $password = readline();
+    $password = ask_hidden( 'password: ' );
     if($username == 'admin' && $password == 'bhea@123')
     {
 	    echo "You have successfully login to your account\n";
@@ -22,6 +22,13 @@ function Welcome()
 		echo "Invalid credentials\n";
 	    welcome();
     }
+}
+function ask_hidden( $prompt ) {
+	echo $prompt;
+	echo "\033[30;40m";  // black text on black background
+	$input = fgets( STDIN );
+	echo "\033[0m";      // reset
+	return rtrim( $input, "\n" );
 }
 function showMenu()
 {
@@ -70,7 +77,7 @@ function showSubMenu($module)
 		{
 			case 1:
 				create($module,$actions,$fieldsarray);
-				echo "Account created successfully";
+				echo "$module created successfully";
 				# code...
 				break;
 			case 2:
@@ -104,19 +111,62 @@ function create($module,$actions,$fieldsarray)
         $query="insert into $module values('$valuestring')";
         $result=mysqli_query($connection, $query) or die("error in inserting data" . mysqli_error($connection));
 		mysqli_close($connection);
+		echo "Please press R to view again\n";
+		echo "enter 00 to goto main menu\n";
+		echo "enter 11 to goto submenu\n";
+		$c=readline();
+		if ($c=='R') 
+				
+		{
+			return(create($module,$actions,$fieldsarray));
+		}
+		else if($c=='00')
+			showMenu();
+		else if($c=='11')
+			showSubMenu();
+		else
+			exit();
+		mysqli_close($connection);
 }
 function view($module,$actions,$fieldsarray)
 {
+	$tbl = new LucidFrame\Console\ConsoleTable();
 	$connection=databaseConnect();
-	$sql="select * from $module";
-	$result=mysqli_query($connection,$sql);
-	while($data=mysqli_fetch_assoc($result)){
-		foreach ($data as $key => $value) {
-		 echo "{$key} = {$value} \n";
+	$query="select * from  $module";
+	$result=mysqli_query($connection, $query);
+	$k_array=array();
+	while ($fieldinfo=mysqli_fetch_field($result))
+    {
+    array_push($k_array, $fieldinfo->name);
+    }
+    $tbl->setHeaders($k_array);
+	while($row=mysqli_fetch_assoc($result)) 
+		{
+			$v_array=array();
+			foreach ($row as $key => $value) {
+				array_push($v_array, $value);
+			}
+			$arraystring = implode(',',$v_array);
+			$tbl->addRow($v_array);
+		}
+	echo $tbl->getTable();
+	echo "Please press R to view again\n";
+	echo "enter 00 to goto main menu\n";
+	echo "enter 11 to goto submenu\n";
+	$c=readline();
+	if ($c=='R') 
+			
+	{
+		return(view($module,$actions,$fieldsarray));
 	}
-	echo "\n";
-}
-	mysqli_close($connection); 
+	else if($c=='00')
+		showMenu();
+	else if($c=='11')
+		showSubMenu();
+	else
+		exit();
+	mysqli_close($connection);
+
 }
 function delete($module,$actions,$fieldsarray)
 {
